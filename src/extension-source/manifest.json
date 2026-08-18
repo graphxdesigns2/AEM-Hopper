@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "AEM Asset Hopper",
+  "version": "1.2",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "aem-asset-folder-jump@local",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "description": "Jump from an AEM Author editor page straight to the matching DAM assets folder. Created by Angelo Destro.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://author-canada-prod.adobecqms.net/*",
+    "https://canada-preview.adobecqms.net/*",
+    "https://*.canada.ca/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AEM Asset Hopper"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}

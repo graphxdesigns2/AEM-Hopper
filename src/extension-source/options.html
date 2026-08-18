@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEM Asset Hopper — Settings</title>
+  <link rel="stylesheet" href="options.css">
+  <base target="_blank">
+</head>
+<body>
+  <div class="settings-container">
+    <!-- Page Header -->
+    <header class="settings-header">
+      <div class="header-left">
+        <div class="logo-box">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <div>
+          <h1>AEM Asset Hopper — Settings</h1>
+          <p class="subtitle">Configure department slug mappings, subfolders, page exceptions, and popup preferences.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="header-save-btn" class="btn btn-primary" type="button">Save Settings</button>
+      </div>
+    </header>
+
+    <!-- Info Box -->
+    <div class="tip-banner">
+      <div class="tip-icon">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <div class="tip-content">
+        <strong>How Mapping Works:</strong> Mapping <code>health</code> &rarr; <code>hc-sc</code> automatically maps page URLs like <code>../services/health/..</code> to DAM folders under <code>../hc-sc/images/features/..</code>.
+      </div>
+    </div>
+
+    <!-- Grid: Dept Mappings & Subfolders -->
+    <div class="settings-grid">
+      <!-- Department Mappings -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2>Department Mappings</h2>
+            <p>Map page URL department slug to DAM folder code (under <code>/content/dam/</code>).</p>
+          </div>
+          <button id="add-row" class="btn btn-sm btn-secondary" type="button">+ Add Mapping</button>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 46%;">Content Slug</th>
+                  <th style="width: 46%;">DAM Dept Code</th>
+                  <th style="width: 8%;"></th>
+                </tr>
+              </thead>
+              <tbody id="mapping-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Asset Subfolders -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2>Asset Subfolders</h2>
+            <p>Subfolders checked right after dept code (e.g. <code>images</code>, <code>documents</code>).</p>
+          </div>
+          <button id="add-subfolder-row" class="btn btn-sm btn-secondary" type="button">+ Add Subfolder</button>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 92%;">Subfolder Name</th>
+                  <th style="width: 8%;"></th>
+                </tr>
+              </thead>
+              <tbody id="subfolder-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Page Exceptions / Overrides -->
+    <section class="card" style="margin-top: 16px;">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2>Page Overrides & Exceptions</h2>
+          <p>For custom pages that don't follow regular slug hierarchy, set an exact content path and target DAM folder.</p>
+        </div>
+        <button id="add-exception-row" class="btn btn-sm btn-secondary" type="button">+ Add Exception</button>
+      </div>
+      <div class="card-body">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 46%;">Content Path <span>(/content/canadasite/...)</span></th>
+                <th style="width: 46%;">Target DAM Path <span>(/content/dam/...)</span></th>
+                <th style="width: 8%;"></th>
+              </tr>
+            </thead>
+            <tbody id="exception-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preferences Card -->
+    <section class="card" style="margin-top: 16px;">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2>Popup Appearance & History Preferences</h2>
+          <p>Customize the look and behavior of the extension popup.</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="preferences-list">
+          <label class="pref-item">
+            <input type="checkbox" id="show-recent-toggle">
+            <div class="pref-label">
+              <strong>Show Recently Viewed DAM Folders</strong>
+              <span>Displays up to 6 recently opened asset folders inside the popup for quick jumping.</span>
+            </div>
+          </label>
+          <label class="pref-item">
+            <input type="checkbox" id="dark-mode-toggle">
+            <div class="pref-label">
+              <strong>Dark Theme in Extension Popup</strong>
+              <span>Use high-contrast dark theme with glowing red accents.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Bar -->
+    <footer class="settings-footer">
+      <div class="footer-left">
+        <button id="save-btn" class="btn btn-primary" type="button">Save Settings</button>
+        <div id="save-status" class="save-status-msg">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Settings saved successfully!</span>
+        </div>
+      </div>
+      <div class="author-credit">
+        AEM Asset Hopper v1.2 &bull; Created by Angelo Destro
+      </div>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

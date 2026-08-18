@@ -1,0 +1,6 @@
+{
+  "name": "AEM Asset Hopper - Extension UI",
+  "description": "A compact, modern UI redesign for the AEM Asset Hopper Firefox extension popup and settings with light and dark mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
